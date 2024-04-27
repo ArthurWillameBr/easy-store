@@ -1,16 +1,31 @@
+"use client";
+
 import {
   HomeIcon,
   ListOrderedIcon,
   LogInIcon,
+  LogOutIcon,
   MenuIcon,
   PercentIcon,
   ShoppingCart,
 } from "lucide-react";
 import { Button } from "./button";
 import { Card } from "./card";
+import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
 import { Sheet, SheetTrigger, SheetContent, SheetHeader } from "./sheet";
+import { signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+import { Separator } from "./separator";
 
 export function Header() {
+  const handleLoginCLick = async () => {
+    await signIn();
+  };
+  const handleLogoutClick = async () => {
+    await signOut();
+  };
+  const { status, data } = useSession();
+
   return (
     <Card className="flex items-center justify-between p-[1.875rem]">
       <Sheet>
@@ -23,13 +38,45 @@ export function Header() {
           <SheetHeader className="text-left text-xl font-semibold ">
             Menu
           </SheetHeader>
+          {status === "authenticated" && data?.user && (
+            <div className="flex flex-col">
+              <div className="flex items-center gap-2 py-2">
+                <Avatar>
+                  <AvatarFallback>
+                    {data.user.name?.[0].toUpperCase()}
+                  </AvatarFallback>
+                  {data.user.image && <AvatarImage src={data.user.image} />}
+                </Avatar>
+                <div className="flex flex-col">
+                  <p className="font-medium">{data.user.name}</p>
+                  <p className="text-sm opacity-75">Boas compras!</p>
+                </div>
+              </div>
+              <Separator />
+            </div>
+          )}
 
           <div className="mt-4 flex flex-col gap-2">
-            <Button variant="outline" className="w-full justify-start gap-2">
-              <LogInIcon size={16} />
-              Fazer Login
-            </Button>
-
+            {status === "unauthenticated" && (
+              <Button
+                onClick={handleLoginCLick}
+                variant="outline"
+                className="w-full justify-start gap-2"
+              >
+                <LogInIcon size={16} />
+                Fazer Login
+              </Button>
+            )}
+            {status === "authenticated" && (
+              <Button
+                onClick={handleLogoutClick}
+                variant="outline"
+                className="w-full justify-start gap-2"
+              >
+                <LogOutIcon size={16} />
+                Fazer logout
+              </Button>
+            )}
             <Button variant="outline" className="w-full justify-start gap-2">
               <HomeIcon size={16} />
               Inicio
@@ -45,7 +92,6 @@ export function Header() {
               Catálogo
             </Button>
           </div>
-          
         </SheetContent>
       </Sheet>
       <h1 className="text-lg font-semibold ">
