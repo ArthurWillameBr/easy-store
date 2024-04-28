@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Category } from "@prisma/client";
-import { HeadphonesIcon, KeyboardIcon, MonitorIcon, MouseIcon, SpeakerIcon, SquareIcon } from "lucide-react";
+import { HeadphonesIcon, KeyboardIcon, MonitorIcon, MouseIcon, SquareIcon, Speaker } from "lucide-react";
 
 interface CategoryItemProps {
   category: Category;
@@ -12,9 +12,9 @@ export const CategoryItem = ({ category }: CategoryItemProps) => {
     const categoryIcon = {
         keyboards: <KeyboardIcon size={16} />,
         monitors: <MonitorIcon size={16} />,
-        headphones: <HeadphonesIcon size={16} />,
         mousepads: <SquareIcon size={16} />,
-        speaker: <SpeakerIcon  size={16}/>,
+        headphones: <HeadphonesIcon size={16} />,
+        speakers:  <Speaker  size={16}/>,
         mouses: <MouseIcon  size={16}/>,
     }
   return (
