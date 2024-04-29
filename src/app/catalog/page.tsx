@@ -15,7 +15,6 @@ const CatalogPage = async () => {
         <ShapesIcon size={16} />
         Catálogo
       </Badge>
-
       <div className="grid grid-cols-2 flex-wrap gap-8">
         {categories.map((category) => (
           <CategoryItem key={category.id} category={category} />

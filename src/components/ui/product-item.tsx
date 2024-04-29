@@ -9,8 +9,8 @@ interface ProductItemProps {
 
 export const ProductItem = ({ product }: ProductItemProps) => {
   return (
-    <div className="flex max-w-[156px] flex-col gap-4 ">
-      <div className="relative flex h-[170px] w-[156px] items-center justify-center rounded-lg bg-accent">
+    <div className="flex flex-col  gap-4 ">
+      <div className="relative flex h-[170px] w-full items-center justify-center rounded-lg bg-accent">
         <Image
           src={product.imageUrls[0]}
           alt="produtos com desconto"
@@ -24,7 +24,7 @@ export const ProductItem = ({ product }: ProductItemProps) => {
         />
         {product.discountPercentage > 0 && (
           <Badge className="absolute left-3 top-3 px-2 py-[2px]">
-            <ArrowDownIcon size={14}/>
+            <ArrowDownIcon size={14} />
             {product.discountPercentage}%
           </Badge>
         )}
