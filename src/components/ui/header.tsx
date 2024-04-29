@@ -12,10 +12,17 @@ import {
 import { Button } from "./button";
 import { Card } from "./card";
 import { Avatar, AvatarFallback, AvatarImage } from "./avatar";
-import { Sheet, SheetTrigger, SheetContent, SheetHeader } from "./sheet";
+import {
+  Sheet,
+  SheetTrigger,
+  SheetContent,
+  SheetHeader,
+  SheetClose,
+} from "./sheet";
 import { signIn, signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { Separator } from "./separator";
+import Link from "next/link";
 
 export function Header() {
   const handleLoginCLick = async () => {
@@ -87,10 +94,17 @@ export function Header() {
               Ofertas
             </Button>
 
-            <Button variant="outline" className="w-full justify-start gap-2">
-              <ListOrderedIcon size={16} />
-              Catálogo
-            </Button>
+            <SheetClose asChild>
+              <Link href="/catalog">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start gap-2"
+                >
+                  <ListOrderedIcon size={16} />
+                  Catálogo
+                </Button>
+              </Link>
+            </SheetClose>
           </div>
         </SheetContent>
       </Sheet>
