@@ -1,10 +1,10 @@
 "use client";
 import { useContext, useState } from "react";
-import { Badge } from "@/components/ui/badge";
 import { ProductWithTotalPrice } from "@/helpers/product";
-import { ArrowDown, ArrowLeft, ArrowRight, TruckIcon } from "lucide-react";
+import {ArrowLeft, ArrowRight, TruckIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CartContext } from "@/providers/cart";
+import { DiscountBadge } from "@/components/ui/discount-badge";
 
 interface ProductInfoPros {
   product: ProductWithTotalPrice;
@@ -36,9 +36,9 @@ export const ProductInfo = ({ product }: ProductInfoPros) => {
           R$ {product.totalPrice.toFixed(2)}
         </h1>
         {product.discountPercentage > 0 && (
-          <Badge className="px-2 py-[2px]">
-            <ArrowDown size={14} /> {product.discountPercentage}%
-          </Badge>
+          <DiscountBadge>
+            {product.discountPercentage}
+          </DiscountBadge>
         )}
       </div>
       {product.discountPercentage > 0 && (
