@@ -87,7 +87,7 @@ export const ProductInfo = ({ product }: ProductInfoPros) => {
           <TruckIcon />
           <div className="flex flex-col">
             <p className="text-xs">
-              Entrega via <span className="font-bold italic">EasyPacket®</span>
+              Entrega via <span className="font-bold italic">ESPacket®</span>
             </p>
             <p className="text-xs text-[#8162ff]">
               Envio para <span className="font-bold">todo Brasil</span>{" "}
