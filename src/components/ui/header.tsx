@@ -85,11 +85,17 @@ export function Header() {
                 Fazer logout
               </Button>
             )}
-            <Button variant="outline" className="w-full justify-start gap-2">
-              <HomeIcon size={16} />
-              Inicio
-            </Button>
-
+            <SheetClose asChild>
+              <Link href="/">
+                <Button
+                  variant="outline"
+                  className="w-full justify-start gap-2"
+                >
+                  <HomeIcon size={16} />
+                  Inicio
+                </Button>
+              </Link>
+            </SheetClose>
             <Button variant="outline" className="w-full justify-start gap-2">
               <PercentIcon size={16} />
               Ofertas
