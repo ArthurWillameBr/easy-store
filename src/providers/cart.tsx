@@ -1,7 +1,7 @@
 "use client";
 
 import { ProductWithTotalPrice } from "@/helpers/product";
-import { ReactNode, createContext, useMemo, useState } from "react";
+import { ReactNode, createContext, useMemo, useState, useEffect } from "react";
 
 export interface CartProduct extends ProductWithTotalPrice {
   quantity: number;
@@ -38,19 +38,29 @@ export const CartContext = createContext<ICartContext>({
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<CartProduct[]>([]);
 
+  useEffect(() => {
+    setProducts(
+      JSON.parse(localStorage.getItem("@easy-store/cart-products") || "[]"),
+    );
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("@easy-store/cart-products", JSON.stringify(products));
+  }, [products]);
+
   const subtotal = useMemo(() => {
     return products.reduce((acc, product) => {
       return acc + Number(product.basePrice) * product.quantity;
     }, 0);
-  }, [products])
+  }, [products]);
 
   const total = useMemo(() => {
     return products.reduce((acc, product) => {
-      return acc + product.totalPrice * product.quantity
-    }, 0)
-  }, [products])
+      return acc + product.totalPrice * product.quantity;
+    }, 0);
+  }, [products]);
 
-  const totalDiscount = subtotal - total
+  const totalDiscount = subtotal - total;
 
   const addProductToCart = (product: CartProduct) => {
     const productIsAlreadyOnCart = products.some(
@@ -93,22 +103,23 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const incrementProductQuantity = (productId: string) => {
     setProducts((prev) =>
-      prev
-        .map((cartProduct) => {
-          if (cartProduct.id === productId) {
-            return {
-              ...cartProduct,
-              quantity: cartProduct.quantity + 1,
-            };
-          }
-          return cartProduct;
-        })
+      prev.map((cartProduct) => {
+        if (cartProduct.id === productId) {
+          return {
+            ...cartProduct,
+            quantity: cartProduct.quantity + 1,
+          };
+        }
+        return cartProduct;
+      }),
     );
   };
 
-    const removeProductFromCart = (productId: string) => {
-      setProducts((prev) => prev.filter((cartProduct) => cartProduct.id !== productId));
-    }
+  const removeProductFromCart = (productId: string) => {
+    setProducts((prev) =>
+      prev.filter((cartProduct) => cartProduct.id !== productId),
+    );
+  };
 
   return (
     <CartContext.Provider
