@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { Product } from "@prisma/client";
+import { ProductWithTotalPrice } from "@/helpers/product";
 import { ReactNode, createContext, useState } from "react";
 
-interface CartProduct extends Product {
+export interface CartProduct extends ProductWithTotalPrice {
   quantity: number;
 }
 
@@ -13,33 +13,53 @@ interface ICartContext {
   cartBasePrice: number;
   cartTotalDiscount: number;
   addProductToCart: (product: CartProduct) => void;
-
 }
 
 export const CartContext = createContext<ICartContext>({
-    products: [],
-    cartTotalPrice: 0,
-    cartBasePrice: 0,
-    cartTotalDiscount: 0,
-    addProductToCart: () => {},
-})
+  products: [],
+  cartTotalPrice: 0,
+  cartBasePrice: 0,
+  cartTotalDiscount: 0,
+  addProductToCart: () => {},
+});
 
-export const CartProvider = ({children}: { children: ReactNode }) => {
+export const CartProvider = ({ children }: { children: ReactNode }) => {
+  const [products, setProducts] = useState<CartProduct[]>([]);
 
-    const [products, setProducts] = useState<CartProduct[]>([])
+  const addProductToCart = (product: CartProduct) => {
+    const productIsAlreadyOnCart = products.some(
+      (cartProduct) => cartProduct.id === product.id,
+    );
 
-    const addProductToCart = (product: CartProduct ) => {
-        setProducts((prev) => [...prev, product])
+    if (productIsAlreadyOnCart) {
+      setProducts((prev) =>
+        prev.map((cartProduct) => {
+          if (cartProduct.id === product.id) {
+            return {
+              ...cartProduct,
+              quantity: cartProduct.quantity + product.quantity,
+            };
+          }
+          return cartProduct;
+        }),
+      );
+      return;
     }
-    return (
-        <CartContext.Provider value={ {
-            products,
-            addProductToCart,
-            cartTotalPrice: 0,
-            cartBasePrice: 0,
-            cartTotalDiscount: 0,
-        } }>
-            {children}
-        </CartContext.Provider> 
-    )
-}
+
+    setProducts((prev) => [...prev, product]);
+  };
+
+  return (
+    <CartContext.Provider
+      value={{
+        products,
+        addProductToCart,
+        cartTotalPrice: 0,
+        cartBasePrice: 0,
+        cartTotalDiscount: 0,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+};
