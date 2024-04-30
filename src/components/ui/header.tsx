@@ -23,6 +23,7 @@ import { signIn, signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import { Separator } from "./separator";
 import Link from "next/link";
+import { Cart } from "./cart";
 
 export function Header() {
   const handleLoginCLick = async () => {
@@ -114,9 +115,16 @@ export function Header() {
           <span className="text-primary">Easy </span>Store
         </h1>
       </Link>
-      <Button size="icon" variant="outline">
-        <ShoppingCart />
-      </Button>
+      <Sheet>
+        <SheetTrigger asChild>
+          <Button size="icon" variant="outline">
+            <ShoppingCart />
+          </Button>
+        </SheetTrigger>
+        <SheetContent>
+          <Cart />
+        </SheetContent>
+      </Sheet>
     </Card>
   );
 }
