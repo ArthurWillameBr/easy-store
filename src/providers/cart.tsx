@@ -36,17 +36,32 @@ export const CartContext = createContext<ICartContext>({
 });
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [products, setProducts] = useState<CartProduct[]>([]);
+  
+  const  LOCAL_STORAGE_KEY = "@easy-store/cart-products" ;
+
+  const [products, setProducts] = useState<CartProduct[]>(() => {
+    if (typeof window !== "undefined") {
+      const recoveryProducts = localStorage.getItem(
+        LOCAL_STORAGE_KEY,
+      ) as string;
+      return JSON.parse(recoveryProducts) ?? [];
+    } else {
+      return [];
+    }
+  });
 
   useEffect(() => {
-    setProducts(
-      JSON.parse(localStorage.getItem("@easy-store/cart-products") || "[]"),
-    );
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("@easy-store/cart-products", JSON.stringify(products));
+    if (typeof window !== "undefined") {
+      if (products.length === 0) {
+        localStorage.removeItem(LOCAL_STORAGE_KEY);
+      } else {
+        localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(products));
+      };
+    }
   }, [products]);
+
+
+
 
   const subtotal = useMemo(() => {
     return products.reduce((acc, product) => {
