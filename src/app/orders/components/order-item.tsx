@@ -27,7 +27,7 @@ export const OrderItem = ({order}: OrderItemPros) => {
                         </div>
                     </AccordionTrigger>
                     <AccordionContent>
-                        <div className="flex flex-col">
+                        <div className="flex flex-col gap-2">
                             <div className="flex items-center justify-between">
                                 <div className="font-bold">
                                     <p>Status</p>
@@ -43,9 +43,11 @@ export const OrderItem = ({order}: OrderItemPros) => {
                                     <p className="opacity-65">Cartão</p>
                                 </div>
                             </div>
+                            <div className="flex flex-col gap-3">
                             {order.orderProducts.map((orderProduct) => (
                                 <OrderProductItem key={orderProduct.id} orderProduct={orderProduct}/>
                             ))}
+                            </div>
                         </div>
                     </AccordionContent>
                 </AccordionItem>
