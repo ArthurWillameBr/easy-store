@@ -34,7 +34,7 @@ export default async function Home() {
     <>
       <div className="mx-auto max-w-[1920px]">
         <Image
-          src="/bannerDiscountDesktop.png"
+          src="/BannerDiscountDesktop.png"
           alt="até 55% de desconto esse mês"
           className="hidden h-auto w-full lg:block"
           width={0}
