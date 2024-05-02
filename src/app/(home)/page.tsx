@@ -32,48 +32,50 @@ export default async function Home() {
 
   return (
     <>
-      <div className="max-w-[1920px] mx-auto">
-      <Image
-        src="/bannerDiscountDesktop.png"
-        alt="até 55% de desconto esse mês"
-        className="hidden h-auto w-full lg:block"
-        width={0}
-        height={0}
-        sizes="100vw"
-      />
-</div>
+      <div className="mx-auto max-w-[1920px]">
+        <Image
+          src="/bannerDiscountDesktop.png"
+          alt="até 55% de desconto esse mês"
+          className="hidden h-auto w-full lg:block"
+          width={0}
+          height={0}
+          sizes="100vw"
+        />
+      </div>
       <div className="mx-auto flex flex-col gap-8 py-8 lg:container lg:gap-10">
-      <PromoBanner
-        src="/bannerDiscount.png"
-        alt="até 55% de desconto esse mês"
-        className="lg:hidden"
-      />
-     
-     
-      <div className="px-5 lg:mt-2">
-        <Categories />
-      </div>
+        <PromoBanner
+          src="/bannerDiscount.png"
+          alt="até 55% de desconto esse mês"
+          className="lg:hidden"
+        />
 
-      <div className="flex flex-col gap-3 lg:gap-1">
-        <SectionTitle>Ofertas</SectionTitle>
-        <ProductList products={deals} />
-      </div>
-    <div className="flex flex-col lg:flex-row">
-      <PromoBanner
-        src="/bannerMouses.png"
-        alt="até 55% de desconto em mouses"
-      />
-      </div>
-      <div>
-        <SectionTitle>Teclados</SectionTitle>
-        <ProductList products={keyboards} />
-      </div>
+        <div className="px-5 lg:mt-2">
+          <Categories />
+        </div>
 
-      <PromoBanner src="/bannerFones.png" alt="até 20% de desconto em fones" />
-      <div>
-        <SectionTitle>Mouses</SectionTitle>
-        <ProductList products={mouses} />
-      </div>
+        <div className="flex flex-col gap-3 lg:gap-5">
+          <SectionTitle className="pl-5">Ofertas</SectionTitle>
+          <ProductList products={deals} />
+        </div>
+        <div className="flex flex-col lg:flex-row">
+          <PromoBanner
+            src="/bannerMouses.png"
+            alt="até 55% de desconto em mouses"
+          />
+        </div>
+        <div className="flex flex-col gap-3 lg:gap-5">
+          <SectionTitle className="pl-5">Teclados</SectionTitle>
+          <ProductList products={keyboards} />
+        </div>
+
+        <PromoBanner
+          src="/bannerFones.png"
+          alt="até 20% de desconto em fones"
+        />
+        <div className="flex flex-col gap-3 lg:gap-5">
+          <SectionTitle className="pl-5">Mouses</SectionTitle>
+          <ProductList products={mouses} />
+        </div>
       </div>
     </>
   );
