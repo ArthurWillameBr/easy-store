@@ -15,8 +15,8 @@ export const ProductImages = ({ imagesUrls, name }: ProductImagesProps) => {
     setCurrentImage(imageUrl);
   };
   return (
-    <div className="flex flex-col">
-      <div className="flex h-[380px] w-full items-center justify-center bg-accent ">
+    <div className="flex flex-col lg:w-3/5 lg:min-h-full">
+      <div className="flex h-[380px] lg:h-full w-full items-center justify-center bg-accent lg:rounded-lg">
         <Image
           src={currentImage}
           alt={name}
@@ -29,7 +29,7 @@ export const ProductImages = ({ imagesUrls, name }: ProductImagesProps) => {
           }}
         ></Image>
       </div>
-      <div className="mt-8 grid grid-cols-4 gap-4 px-5">
+      <div className="mt-8 grid grid-cols-4 gap-4 px-5 lg:px-0">
         {imagesUrls.map((imageUrl) => (
           <button
             key={imageUrl}

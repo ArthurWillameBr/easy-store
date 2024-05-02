@@ -29,21 +29,21 @@ export const ProductInfo = ({ product }: ProductInfoPros) => {
     });
   };
   return (
-    <div className="flex flex-col px-5">
-      <h1 className="text-lg">{product.name}</h1>
+    <div className="flex flex-col px-5 lg:w-[40%] lg:bg-accent lg:rounded-lg lg:p-10 ">
+      <h1 className="text-lg lg:text-2xl font-semibold">{product.name}</h1>
       <div className="flex items-center gap-2">
-        <h1 className="text-xl font-bold">
+        <h1 className="text-xl font-bold lg:text-3xl lg:py-1">
           R$ {product.totalPrice.toFixed(2)}
         </h1>
         {product.discountPercentage > 0 && (
-          <DiscountBadge>
+          <DiscountBadge className="lg:text-base">
             {product.discountPercentage}
           </DiscountBadge>
         )}
       </div>
       {product.discountPercentage > 0 && (
-        <div className="flex items-center">
-          <p className="text-sm opacity-75 ">
+        <div className="flex items-center ">
+          <p className="text-sm opacity-75 lg:text-base">
             De:{" "}
             <span className="text-sm line-through opacity-75">
               {" "}
@@ -82,7 +82,7 @@ export const ProductInfo = ({ product }: ProductInfoPros) => {
       >
         Adicionar ao carrinho
       </Button>
-      <div className="mt-5 flex justify-between rounded-lg bg-accent px-5 py-2">
+      <div className="mt-5 flex justify-between items-center rounded-lg bg-accent px-5 py-2 lg:bg-[#2a2a2a]">
         <div className="flex items-center gap-2">
           <TruckIcon />
           <div className="flex flex-col">
