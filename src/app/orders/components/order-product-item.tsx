@@ -33,7 +33,7 @@ export const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
           </p>
         </div>
 
-        <p className="text-xs lg:text-sm">{orderProduct.product.name}</p>
+        <p className="text-sm lg:text-base">{orderProduct.product.name}</p>
 
         <div className="flex w-full items-center justify-between gap-1 ">
           <div className="bottom-0 flex items-center justify-center gap-1 text-right lg:absolute lg:right-0 lg:top-0 lg:my-auto lg:flex-col lg:items-end">
@@ -42,7 +42,7 @@ export const OrderProductItem = ({ orderProduct }: OrderProductItemProps) => {
             </p>
 
             {orderProduct.discountPercentage > 0 && (
-              <p className="text-xs line-through opacity-60 lg:text-sm">
+              <p className="text-sm line-through opacity-60 lg:text-base">
                 R$ {Number(orderProduct.basePrice).toFixed(2)}
               </p>
             )}
