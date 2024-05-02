@@ -9,7 +9,6 @@ const OrderPage = async () => {
     const session = await getServerSession(authOptions);
 
     if (!session || !session.user) {
-        return <p>Access Denied</p>;
         return (
           <div className="flex h-full flex-col items-center justify-center gap-2 p-5">
             <h2 className="font-bold">Acesso Negado!</h2>
