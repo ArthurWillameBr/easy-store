@@ -26,28 +26,28 @@ export const ProductItem = ({ product }: ProductItemProps) => {
             }}
           />
           {product.discountPercentage > 0 && (
-            <DiscountBadge className="absolute left-3 top-3 ">
+            <DiscountBadge className="absolute left-3 top-3">
               {product.discountPercentage}
             </DiscountBadge>
           )}
         </div>
 
         <div className="flex flex-col gap-1 ">
-          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm ">
+          <p className="overflow-hidden text-ellipsis whitespace-nowrap text-sm lg:text-base ">
             {product.name}
           </p>
           <div className="flex items-center gap-3">
             {product.discountPercentage > 0 ? (
               <>
-                <p className="truncate text-sm font-semibold">
+                <p className="truncate text-sm font-semibold lg:text-lg">
                   R$ {product.totalPrice.toFixed(2)}
                 </p>
-                <p className="truncate text-xs line-through opacity-75">
+                <p className="truncate text-xs lg:text-sm line-through opacity-60">
                   R$ {Number(product.basePrice).toFixed(2)}
                 </p>
               </>
             ) : (
-              <p className="text-sm font-semibold">
+              <p className="text-sm font-semibold lg:text-lg">
                 R$ {product.basePrice.toFixed(2)}
               </p>
             )}
