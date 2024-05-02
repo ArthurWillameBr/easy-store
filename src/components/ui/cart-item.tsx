@@ -9,8 +9,11 @@ interface CartItemProps {
 }
 
 export const CartItem = ({ product }: CartItemProps) => {
-  const { decreaseProductQuantity, incrementProductQuantity, removeProductFromCart } =
-    useContext(CartContext);
+  const {
+    decreaseProductQuantity,
+    incrementProductQuantity,
+    removeProductFromCart,
+  } = useContext(CartContext);
 
   const handleDecreaseProductQuantityClick = () => {
     decreaseProductQuantity(product.id);
@@ -21,12 +24,12 @@ export const CartItem = ({ product }: CartItemProps) => {
 
   const handleRemoveProductFromCartClick = () => {
     removeProductFromCart(product.id);
-  }
+  };
 
   return (
     <div className="flex items-center justify-between">
       <div className="items0-center flex gap-4">
-        <div className="flex h-[77px] w-[77px] items-center justify-center rounded-lg bg-accent">
+        <div className="flex size-[77px] items-center  justify-center rounded-lg bg-accent lg:size-28">
           <Image
             src={product.imageUrls[0]}
             width={0}
@@ -36,41 +39,48 @@ export const CartItem = ({ product }: CartItemProps) => {
             className="h-auto max-h-[70%] w-auto max-w-[80%]"
           />
         </div>
-        <div className="flex flex-col gap-2">
-          <p className="text-xs">{product.name}</p>
-          <div className="flex items-center gap-2">
-            <p className="text-sm font-bold">{product.totalPrice.toFixed(2)}</p>
+        <div className="flex flex-col gap-2 ">
+          <p className="text-xs font-semibold lg:text-base">{product.name}</p>
+          <div className="flex items-center gap-2 lg:gap-4">
+            <p className="text-sm font-bold lg:text-base">
+              R$ {product.totalPrice.toFixed(2)}
+            </p>
             {product.discountPercentage > 0 && (
-              <p className="text-xs line-through opacity-75">
+              <p className="text-xs line-through opacity-75 lg:text-sm">
                 R$ {Number(product.basePrice).toFixed(2)}
               </p>
             )}
           </div>
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1 lg:gap-3">
             <Button
               size="icon"
               variant="outline"
-              className="size-8"
+              className="size-8 lg:size-9"
               onClick={handleDecreaseProductQuantityClick}
             >
-              <ArrowLeft size={16} />
+              <ArrowLeft className="size-4 lg:size-5" />
             </Button>
 
-            <span className="text-xs">{product.quantity}</span>
+            <span className="text-xs lg:text-sm">{product.quantity}</span>
 
             <Button
               size="icon"
               variant="outline"
-              className="size-8"
+              className="size-8 lg:size-9"
               onClick={handleIncreaseProductQuantityClick}
             >
-              <ArrowRight size={16} />
+              <ArrowRight className="size-4 lg:size-5" />
             </Button>
           </div>
         </div>
       </div>
-      <Button size="icon" variant="outline" onClick={handleRemoveProductFromCartClick}>
-        <Trash size={16} />
+      <Button
+        size="icon"
+        variant="outline"
+        className="hover:text-red-600 size-9"
+        onClick={handleRemoveProductFromCartClick}
+      >
+        <Trash className="size-4 lg:size-5 " />
       </Button>
     </div>
   );
