@@ -67,7 +67,6 @@ export default async function Home() {
           src="/bannerFones.png"
           alt="até 20% de desconto em fones"
           className="hidden lg:block w-0 flex-1"
-         
         />
         </div>
         <div className="flex flex-col gap-3 lg:gap-5">
@@ -78,6 +77,11 @@ export default async function Home() {
           src="/bannerFones.png"
           alt="até 20% de desconto em fones"
           className="lg:hidden"
+        />
+        <PromoBanner
+          src="/bannerFreeShipping.png"
+          alt="Frete grátis para todo Brasil"
+          className="hidden lg:block"
         />
         <div className="flex flex-col gap-3 lg:gap-5">
           <SectionTitle className="pl-5">Mouses</SectionTitle>
