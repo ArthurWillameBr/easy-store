@@ -89,7 +89,7 @@ export const ProductInfo = ({ product }: ProductInfoPros) => {
             <p className="text-xs">
               Entrega via <span className="font-bold italic">ESPacket®</span>
             </p>
-            <p className="text-xs text-[#8162ff]">
+            <p className="text-xs text-primary">
               Envio para <span className="font-bold">todo Brasil</span>{" "}
             </p>
           </div>

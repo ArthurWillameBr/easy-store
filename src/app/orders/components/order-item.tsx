@@ -62,7 +62,7 @@ export const OrderItem = ({ order }: OrderItemPros) => {
               <div className="flex items-center justify-between">
                 <div className="font-bold">
                   <p className="text-sm lg:text-base">Status</p>
-                  <p className="text-[#8162ff] lg:text-sm">
+                  <p className="text-primary lg:text-sm">
                     {getOrderStatus(order.status)}
                   </p>
                 </div>

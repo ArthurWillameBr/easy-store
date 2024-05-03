@@ -36,10 +36,10 @@ export function Header() {
   const { status, data } = useSession();
 
   return (
-    <Card className="flex items-center justify-between p-[1.875rem]">
+    <Card className="flex items-center rounded-none justify-between p-[1.875rem]">
       <Sheet>
         <SheetTrigger asChild>
-          <Button size="icon" variant="outline">
+          <Button size="icon" variant="outline" className="border-2 border-primary">
             <MenuIcon />
           </Button>
         </SheetTrigger>
@@ -144,7 +144,7 @@ export function Header() {
       </Link>
       <Sheet>
         <SheetTrigger asChild>
-          <Button size="icon" variant="outline">
+          <Button size="icon" variant="outline" className="border-2 border-primary">
             <ShoppingCart />
           </Button>
         </SheetTrigger>

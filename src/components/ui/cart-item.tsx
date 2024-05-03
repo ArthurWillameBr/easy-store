@@ -61,7 +61,7 @@ export const CartItem = ({ product }: CartItemProps) => {
               <ArrowLeft className="size-4 lg:size-5" />
             </Button>
 
-            <span className="text-xs lg:text-sm">{product.quantity}</span>
+            <span className="font-semibold text-sm lg:text-sm">{product.quantity}</span>
 
             <Button
               size="icon"
