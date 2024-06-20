@@ -26,6 +26,9 @@ import { Separator } from "./separator";
 import Link from "next/link";
 import { Cart } from "./cart";
 import { ModeToggle } from "../mode-toggle";
+import { useContext } from "react";
+import { CartContext } from "@/providers/cart";
+import { Badge } from "./badge";
 
 export function Header() {
   const handleLoginCLick = async () => {
@@ -36,11 +39,21 @@ export function Header() {
   };
   const { status, data } = useSession();
 
+  const { products } = useContext(CartContext);
+
+  const cartQuantityItems = products.reduce((acc, product) => {
+    return acc + 1 * product.quantity;
+  }, 0);
+
   return (
-    <Card className="flex items-center rounded-none justify-between p-[1.875rem]">
+    <Card className="flex items-center justify-between rounded-none p-[1.875rem]">
       <Sheet>
         <SheetTrigger asChild>
-          <Button size="icon" variant="outline" className="border-2 border-primary">
+          <Button
+            size="icon"
+            variant="outline"
+            className="border-2 border-primary"
+          >
             <MenuIcon />
           </Button>
         </SheetTrigger>
@@ -145,7 +158,14 @@ export function Header() {
       </Link>
       <Sheet>
         <SheetTrigger asChild>
-          <Button size="icon" variant="outline" className="border-2 border-primary">
+          <Button size="icon" variant="outline" className="relative">
+            {cartQuantityItems > 0 && (
+              <Badge
+                className={`${cartQuantityItems >= 100 && "px-4"} absolute right-[calc(-1.25rem/2)] top-[calc(-1.25rem/2)] flex h-6 w-6 items-center justify-center text-xs font-bold`}
+              >
+                {cartQuantityItems}
+              </Badge>
+            )}
             <ShoppingCart />
           </Button>
         </SheetTrigger>
