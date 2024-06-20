@@ -3,26 +3,50 @@
 @tailwind utilities;
 
 @layer base {
+
   :root {
-    --background: 224 100% 95%;
-    --foreground: 224 5% 0%;
-    --card: 224 50% 90%;
-    --card-foreground: 224 5% 10%;
-    --popover: 224 100% 95%;
-    --popover-foreground: 224 100% 0%;
-    --primary: 224 81% 48%;
+    --background: 221.2 0% 95%;
+    --foreground: 221.2 0% 0%;
+    --card: 221.2 0% 90%;
+    --card-foreground: 221.2 0% 10%;
+    --popover: 221.2 0% 95%;
+    --popover-foreground: 221.2 95% 0%;
+    --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 224 30% 70%;
+    --secondary: 221.2 10% 70%;
     --secondary-foreground: 0 0% 0%;
-    --muted: 186 30% 85%;
-    --muted-foreground: 224 5% 35%;
-    --accent: 186 30% 80%;
-    --accent-foreground: 224 5% 10%;
-    --destructive: 0 100% 30%;
-    --destructive-foreground: 224 5% 90%;
-    --border: 224 30% 50%;
-    --input: 224 30% 18%;
-    --ring: 224 81% 48%;
+    --muted: 183.2 10% 85%;
+    --muted-foreground: 221.2 0% 35%;
+    --accent: 183.2 10% 80%;
+    --accent-foreground: 221.2 0% 10%;
+    --destructive: 0 50% 30%;
+    --destructive-foreground: 221.2 0% 90%;
+    --border: 221.2 20% 50%;
+    --input: 221.2 20% 18%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 221.2 10% 5%;
+    --foreground: 221.2 0% 90%;
+    --card: 221.2 0% 0%;
+    --card-foreground: 221.2 0% 90%;
+    --popover: 221.2 10% 5%;
+    --popover-foreground: 221.2 0% 90%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 221.2 10% 10%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 183.2 10% 15%;
+    --muted-foreground: 221.2 0% 60%;
+    --accent: 183.2 10% 15%;
+    --accent-foreground: 221.2 0% 90%;
+    --destructive: 0 50% 30%;
+    --destructive-foreground: 221.2 0% 90%;
+    --border: 221.2 20% 18%;
+    --input: 221.2 20% 18%;
+    --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
   }
 }
@@ -31,9 +55,11 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply h-full bg-background text-foreground;
   }
+
   html {
     @apply h-full;
   }
