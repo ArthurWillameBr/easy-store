@@ -25,6 +25,7 @@ import { useSession } from "next-auth/react";
 import { Separator } from "./separator";
 import Link from "next/link";
 import { Cart } from "./cart";
+import { ModeToggle } from "../mode-toggle";
 
 export function Header() {
   const handleLoginCLick = async () => {
@@ -109,7 +110,6 @@ export function Header() {
               </Link>
             </SheetClose>
 
-
             <SheetClose asChild>
               <Link href="/deals">
                 <Button
@@ -133,6 +133,7 @@ export function Header() {
                 </Button>
               </Link>
             </SheetClose>
+            <ModeToggle />
           </div>
         </SheetContent>
       </Sheet>

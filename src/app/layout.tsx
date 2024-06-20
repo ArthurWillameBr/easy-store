@@ -22,7 +22,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="flex h-full flex-col">
-          <ThemeProvider>
+          <ThemeProvider 
+             attribute="class"
+             defaultTheme="system"
+             enableSystem
+             disableTransitionOnChange
+          >
             <AuthProvider>
               <CartProvider>
                 <Header />
