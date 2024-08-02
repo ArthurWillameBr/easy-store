@@ -1,5 +1,3 @@
-# Em Desenvolvimento
-
 ## Tecnologias utilizadas:
 
 - **Next.js**
