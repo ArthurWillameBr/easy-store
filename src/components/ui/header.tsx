@@ -152,7 +152,7 @@ export function Header() {
 			<Link href="/">
 				<h1 className="text-lg font-semibold lg:text-xl ">
 					{" "}
-					<span className="text-primary">Hard </span>Store
+					<span className="text-primary">Easy </span>Store
 				</h1>
 			</Link>
 			<Sheet>
